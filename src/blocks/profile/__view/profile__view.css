@@ -1,0 +1,12 @@
+.profile__view {
+  display: flex;
+  gap: 30px;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile__view {
+    flex-direction: column;
+    gap: calc(26px + (30 - 26) * (100vw - 320px) / (1279 - 320));
+    align-items: center;
+  }
+}

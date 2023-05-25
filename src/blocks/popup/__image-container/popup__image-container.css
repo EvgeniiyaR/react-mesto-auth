@@ -1,0 +1,9 @@
+.popup__image-container {
+  box-sizing: border-box;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: "Inter", Arial, sans-serif;
+  position: relative;
+}

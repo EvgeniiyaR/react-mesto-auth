@@ -1,0 +1,19 @@
+.profile {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 880px;
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+@media screen and (max-width: 1279px) {
+  .profile {
+    gap: 33px;
+    flex-direction: column;
+    max-width: calc(282px + (880 - 282) * (100vw - 320px) / (1279 - 320));
+    padding-top: calc(42px + (40 - 42) * (100vw - 320px) / (1279 - 320));
+    padding-bottom: calc(36px + (50 - 36) * (100vw - 320px) / (1279 - 320));
+  }
+}

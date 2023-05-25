@@ -1,0 +1,14 @@
+.elements__element {
+  display: grid;
+  grid-template-areas:
+  "image image"
+  "title like";
+  box-sizing: border-box;
+  width: 282px;
+  background-color: white;
+  border-radius: 10px;
+  color: black;
+  column-gap: 8px;
+  align-items: center;
+  position: relative;
+}
