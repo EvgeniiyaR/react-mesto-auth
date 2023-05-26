@@ -50,7 +50,6 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      checkToken();
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, initialCards]) => {
         setCurrentUser(userData);
@@ -58,6 +57,10 @@ function App() {
       })
       .catch((err) => console.log(`Возникла ошибка: ${err}`));
     }
+  }, [isLoggedIn]);
+
+  useEffect(() => {
+    checkToken();
   }, [isLoggedIn]);
 
   function handleLogin(email, password) {
