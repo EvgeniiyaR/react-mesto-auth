@@ -1,0 +1,7 @@
+@media screen and (max-width: 768px) {
+  .header__line {
+    border-top: 3px solid white;
+    width: 24px;
+    margin: 0;
+  }
+}

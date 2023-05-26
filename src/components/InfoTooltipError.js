@@ -3,7 +3,7 @@ import InfoTooltip from './InfoTooltip';
 
 function InfoTooltipErorr(props) {
   return (
-    <InfoTooltip isOpen={props.isOpen} onClose={props.onClose} imageSrc={imageSrc} imageAlt="Ошибка" title="Что-то пошло не так!&nbsp;Попробуйте ещё раз." />
+    <InfoTooltip isOpen={props.isOpen} onClose={props.onClose} imageSrc={imageSrc} imageAlt="Ошибка" title="Что-то&nbsp;пошло&nbsp;не&nbsp;так! Попробуйте&nbsp;ещё раз." />
   )
 }
 

@@ -15,6 +15,7 @@ import Register from './Register';
 import ProtectedRouteElement from './ProtectedRoute';
 import InfoTooltipOk from './InfoTooltipOk';
 import InfoTooltipError from './InfoTooltipError';
+import NotFound from './NotFound';
 import * as auth from '../utils/auth';
 
 function App() {
@@ -61,12 +62,14 @@ function App() {
   }, [isLoggedIn]);
 
   function handleLogin(email, password) {
-    return auth.authorize(email, password)
+    auth.authorize(email, password)
     .then((res) => {
       localStorage.setItem('token', res.token);
       setIsLoggedIn(true);
       navigate('/');
-    })
+    }).catch(() => {
+      setStatusErrorPopupOpen(true);
+    });
   }
 
   function handleRegister(email, password) {
@@ -82,6 +85,7 @@ function App() {
 
   function handleSignOut() {
     localStorage.removeItem('token');
+    setIsLoggedIn(false);
     navigate('/sign-in');
   }
 
@@ -164,7 +168,7 @@ function App() {
             <Route path="/" element={<ProtectedRouteElement element={<Main cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}onEditAvatar={handleEditAvatarClick} onCardClick={setSelectedCard} />} isLoggedIn={isLoggedIn} />} />
             <Route path="/sign-up" element={<Register handleRegister={handleRegister} />} />
             <Route path="/sign-in" element={<Login handleLogin={handleLogin} />} />
-            <Route path="*" element={<h2>Not found</h2>} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
           <Footer />
         </div>

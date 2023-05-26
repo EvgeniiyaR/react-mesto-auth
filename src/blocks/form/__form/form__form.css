@@ -4,3 +4,9 @@
   gap: 30px;
   width: 358px;
 }
+
+@media screen and (max-width: 768px) {
+  .form__form {
+    width: calc(260px + (358 - 260) * (100vw - 320px) / (768 - 320));
+  }
+}

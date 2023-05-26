@@ -1,0 +1,9 @@
+.header__container_type_mobile {
+  border-top: 1px solid rgba(84, 84, 84, .7);
+}
+
+@media screen and (max-width: 768px) {
+  .header__container_type_mobile {
+    justify-content: start;
+  }
+}
