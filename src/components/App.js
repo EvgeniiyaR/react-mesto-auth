@@ -164,7 +164,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="body">
         <div className="page">
-          <Header isLoggedIn={isLoggedIn} userInfo={userInfo} handleSignOut={handleSignOut}/>
+          <Header isLoggedIn={isLoggedIn} userInfo={userInfo} handleSignOut={handleSignOut} />
           <Routes>
             <Route path="/" element={<ProtectedRouteElement element={<Main cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick}onEditAvatar={handleEditAvatarClick} onCardClick={setSelectedCard} />} isLoggedIn={isLoggedIn} />} />
             <Route path="/sign-up" element={<Register handleRegister={handleRegister} />} />
@@ -178,7 +178,7 @@ function App() {
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         <PopupWithForm name="delete" title="Вы&nbsp;уверены?" buttonText="Да" />
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-        <InfoTooltip isOpen={isStatusPopupOpen} onClose={closeAllPopups} isStatus={isStatus}/>
+        <InfoTooltip isOpen={isStatusPopupOpen} onClose={closeAllPopups} isStatus={isStatus} />
       </div>
     </CurrentUserContext.Provider>
   );
