@@ -1,8 +1,8 @@
-import React from 'react';
+import { useState } from 'react';
 
 function AuthForm(props) {
 
-  const [formValue, setFormValue] = React.useState({
+  const [formValue, setFormValue] = useState({
     email: '',
     password: '',
   });

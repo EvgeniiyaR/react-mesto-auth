@@ -1,10 +1,9 @@
 import logo from '../images/logo.svg';
-import { Link, useLocation } from 'react-router-dom';
-import React from 'react';
+import { Link, Route, Routes } from 'react-router-dom';
+import { useState } from 'react';
 
 function Header(props) {
-  const [isOpenInfo, setIsOpenInfo] = React.useState(false);
-  const location = useLocation();
+  const [isOpenInfo, setIsOpenInfo] = useState(false);
 
   function handleBurger() {
     setIsOpenInfo(true);
@@ -43,21 +42,32 @@ function Header(props) {
           }
           <nav>
             <ul className="header__list">
-              {
-                location.pathname === "/" &&
-                <li className="header__info">
-                  <p className="header__email">{props.userInfo.email}</p>
-                  <button className="header__logout-button" type="button" onClick={handleExitButtonInfoAndLogout}>Выйти</button>
-                </li>
-              }
+              <Routes>
+                <Route path="/" element=
+                {
+                  <li className="header__info">
+                    <p className="header__email">{props.userInfo.email}</p>
+                    <button className="header__logout-button" type="button" onClick={handleExitButtonInfoAndLogout}>Выйти</button>
+                  </li>
+                } />
+              </Routes>
             </ul>
           </nav>
         </>
         :
           <nav>
             <ul className="header__list">
-              {location.pathname === "/sign-in" && <li><Link className="header__link" to="/sign-up">Регистрация</Link></li>}
-              {location.pathname === "/sign-up" && <li><Link className="header__link" to="/sign-in">Войти</Link></li>}
+              <Routes>
+                <Route path="/sign-in" element={<li><Link className="header__link" to="/sign-up">Регистрация</Link></li>} />
+                <Route path="/sign-up" element={<li><Link className="header__link" to="/sign-in">Войти</Link></li>} />
+                <Route path="*" element=
+                {
+                  <>
+                    <li><Link className="header__link" to="/sign-up">Регистрация</Link></li>
+                    <li><Link className="header__link" to="/sign-in">Войти</Link></li>
+                  </>
+                } />
+              </Routes>
             </ul>
           </nav>
         }
