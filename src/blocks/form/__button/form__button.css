@@ -1,0 +1,20 @@
+.form__button {
+  box-sizing: border-box;
+  padding: 14px 0;
+  background-color: white;
+  width: 100%;
+  border: none;
+  color: black;
+  margin-top: 216px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.22;
+  border-radius: 2px;
+  transition: background-color .3s;
+}
+
+.form__button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, .85);
+}
