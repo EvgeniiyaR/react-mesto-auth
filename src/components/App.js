@@ -23,6 +23,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isStatusPopupOpen, setIsStatusPopupOpen] = useState(false);
   const [isStatus, setIsStatus] = useState(null);
+  const [status, setStatus] = useState(null);
   const [selectedCard, setSelectedCard] = useState({name: '', link: ''});
   const [currentUser, setCurrentUser] = useState({});
   const [cards, setCards] = useState([]);
@@ -52,6 +53,7 @@ function App() {
     if (isLoggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, initialCards]) => {
+        console.log(1);
         setCurrentUser(userData);
         setCards([...initialCards]);
       })
@@ -71,6 +73,7 @@ function App() {
       navigate('/');
     }).catch(() => {
       setIsStatus(false);
+      setStatus('Что-то пошло не так! Попробуйте ещё раз.');
       setIsStatusPopupOpen(true);
     });
   }
@@ -80,10 +83,12 @@ function App() {
     .then(() => {
       setIsStatus(true);
       setIsStatusPopupOpen(true);
+      setStatus('Вы успешно зарегистрировались!');
       navigate('/sign-in');
     })
     .catch(() => {
       setIsStatus(false);
+      setStatus('Что-то пошло не так! Попробуйте ещё раз.');
       setIsStatusPopupOpen(true);
     });
   }
@@ -181,7 +186,7 @@ function App() {
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         <PopupWithForm name="delete" title="Вы&nbsp;уверены?" buttonText="Да" />
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
-        <InfoTooltip isOpen={isStatusPopupOpen} onClose={closeAllPopups} isStatus={isStatus} />
+        <InfoTooltip isOpen={isStatusPopupOpen} onClose={closeAllPopups} isStatus={isStatus} status={status} />
       </div>
     </CurrentUserContext.Provider>
   );
